@@ -2,6 +2,13 @@ import { VSIcon, GitIcon, HTMLIcon, CSSIcon, TSIcon, JSIcon } from "@/components
 import React from "react";
 import { gitData } from "./pages/git";
 
+export interface CheatsheetItem {
+  title: string;
+  icon: string | React.ReactNode;
+  href: string;
+  className?: string;
+}
+
 export const masterData = {
   header: {
     version: "v1.0.0 Stable",
@@ -17,19 +24,19 @@ export const masterData = {
     { label: "สูตรโกงเขียนโค้ด", href: "#", variant: "solid" as const, color: "primary" as const },
   ],
   cheatsheets: [
-    { title: "Keyboard", icon: "⌨️", href: "/docs/keyboard" },
-    { title: "VS Code", icon: React.createElement(VSIcon, { className: "w-8 h-8 text-[#007acc]" }), href: "/docs/vscode" },
-    { title: "Git", icon: React.createElement(GitIcon, { className: "w-8 h-8 text-[#f05032]" }), href: "/docs/git" },
-    { title: "HTML", icon: React.createElement(HTMLIcon, { className: "w-8 h-8 text-[#e34f26]" }), href: "/docs/html" },
-    { title: "CSS", icon: React.createElement(CSSIcon, { className: "w-8 h-8 text-[#1572b6]" }), href: "/docs/css" },
-    { title: "Bootstrap", icon: "B", href: "/docs/bootstrap", className: "text-[#7952b3] font-black text-2xl" },
-    { title: "Tailwind", icon: "🌊", href: "/docs/tailwind", className: "text-[#06b6d4]" },
-    { title: "JavaScript", icon: React.createElement(JSIcon, { className: "w-8 h-8 text-[#f7df1e]" }), href: "/docs/javascript" },
-    { title: "jQuery", icon: "jQ", href: "/docs/jquery", className: "text-[#0769ad] font-bold" },
-    { title: "TypeScript", icon: React.createElement(TSIcon, { className: "w-8 h-8 text-[#3178c6]" }), href: "/docs/typescript" },
-    { title: "Node.js", icon: "JS", href: "/docs/nodejs", className: "text-[#339933] font-bold" },
-    { title: "SQL", icon: "DB", href: "/docs/sql", className: "text-[#4479a1] font-bold" },
-  ],
+    { title: "Keyboard", icon: "keyboard", href: "/docs/keyboard" },
+    { title: "VS Code", icon: "vscode", href: "/docs/vscode" },
+    { title: "Git", icon: "git", href: "/docs/git" },
+    { title: "HTML", icon: "html", href: "/docs/html" },
+    { title: "CSS", icon: "css", href: "/docs/css" },
+    { title: "Bootstrap", icon: "bootstrap", href: "/docs/bootstrap" },
+    { title: "Tailwind", icon: "tailwind", href: "/docs/tailwind" },
+    { title: "JavaScript", icon: "javascript", href: "/docs/javascript" },
+    { title: "jQuery", icon: "jquery", href: "/docs/jquery" },
+    { title: "TypeScript", icon: "typescript", href: "/docs/typescript" },
+    { title: "Node.js", icon: "nodejs", href: "/docs/nodejs" },
+    { title: "SQL", icon: "sql", href: "/docs/sql" },
+  ] as CheatsheetItem[],
   sidebar: {
     title: "Documentation",
     links: [
@@ -40,5 +47,16 @@ export const masterData = {
   },
   pageConfigs: {
     "/docs/git": gitData,
+    "/docs/vscode": "",
+    "/docs/keyboard": "",
+    "/docs/html": "",
+    "/docs/css": "",
+    "/docs/bootstrap": "",
+    "/docs/tailwind": "",
+    "/docs/javascript": "",
+    "/docs/jquery": "",
+    "/docs/typescript": "",
+    "/docs/nodejs": "",
+    "/docs/sql": "",
   } as Record<string, any>
 };

@@ -21,6 +21,7 @@ declare module "@react-types/shared" {
 }
 
 import { LanguageProvider } from "@/components/language-provider";
+import { ToastProvider } from "@heroui/toast";
 
 export function Providers({ children, themeProps }: ProvidersProps) {
   const router = useRouter();
@@ -28,7 +29,10 @@ export function Providers({ children, themeProps }: ProvidersProps) {
   return (
     <LanguageProvider>
       <HeroUIProvider navigate={router.push}>
-        <NextThemesProvider {...themeProps}>{children}</NextThemesProvider>
+        <NextThemesProvider {...themeProps}>
+          <ToastProvider placement="top-center" />
+          {children}
+        </NextThemesProvider>
       </HeroUIProvider>
     </LanguageProvider>
   );
