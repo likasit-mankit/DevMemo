@@ -1,9 +1,9 @@
-import { title } from "@/components/primitives";
+import { ComingSoon } from "@/components/coming-soon";
 
 export default function PricingPage() {
   return (
     <div>
-      <h1 className={title()}>Pricing</h1>
+      <ComingSoon slug="pricing" />
     </div>
   );
 }
