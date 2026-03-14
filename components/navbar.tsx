@@ -1,3 +1,5 @@
+"use client";
+
 import {
   Navbar as HeroUINavbar,
   NavbarContent,
@@ -26,7 +28,16 @@ import {
   Logo,
 } from "@/components/icons";
 
+// ... imports above
+import { useLanguage } from "@/components/language-provider";
+
 export const Navbar = () => {
+  const { language, setLanguage } = useLanguage();
+
+  const toggleLanguage = () => {
+    setLanguage(language === "th" ? "en" : "th");
+  };
+
   const searchInput = (
     <Input
       aria-label="Search"
@@ -90,20 +101,18 @@ export const Navbar = () => {
             <GithubIcon className="text-default-500" />
           </Link>
           <ThemeSwitch />
+
+          <Button
+            isIconOnly
+            variant="light"
+            onPress={toggleLanguage}
+            className="text-default-500 font-bold ml-2"
+          >
+            {language.toUpperCase()}
+          </Button>
+
         </NavbarItem>
         <NavbarItem className="hidden lg:flex">{searchInput}</NavbarItem>
-        <NavbarItem className="hidden md:flex">
-          <Button
-            isExternal
-            as={Link}
-            className="text-sm font-normal text-default-600 bg-default-100"
-            href={siteConfig.links.sponsor}
-            startContent={<HeartFilledIcon className="text-danger" />}
-            variant="flat"
-          >
-            Sponsor
-          </Button>
-        </NavbarItem>
       </NavbarContent>
 
       <NavbarContent className="sm:hidden basis-1 pl-4" justify="end">

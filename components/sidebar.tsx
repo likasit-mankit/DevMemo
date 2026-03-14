@@ -6,13 +6,19 @@ import Link from "next/link";
 
 export function Sidebar() {
   const pathname = usePathname();
-  const { sidebar } = masterData;
+  const { sidebar, pageConfigs } = masterData;
+  const config = pageConfigs[pathname] || {};
 
   // Define paths where the sidebar should be visible
   const sidebarPaths = ["/docs", "/cheatsheet"];
-  const showSidebar = sidebarPaths.some((path) => pathname.startsWith(path));
+  const isTargetRoot = sidebarPaths.some((path) => pathname.startsWith(path));
+
+  // Hide if explicitly configured, otherwise show if it's a target root
+  const showSidebar = config.hideSidebar ? false : isTargetRoot;
+  const showSidebar2 = masterData.header.hideSidebar ? false : isTargetRoot;
 
   if (!showSidebar) return null;
+  if (!showSidebar2) return null;
 
   return (
     <aside className="hidden md:flex w-72 flex-col border-r border-divider py-6 px-4 shrink-0 overflow-y-auto">
@@ -25,11 +31,10 @@ export function Sidebar() {
             <Link
               key={i}
               href={link.href}
-              className={`px-3 py-2 rounded-lg text-sm transition-colors ${
-                pathname === link.href 
-                  ? "bg-primary/10 text-primary font-medium" 
-                  : "text-default-600 hover:bg-default-100"
-              }`}
+              className={`px-3 py-2 rounded-lg text-sm transition-colors ${pathname === link.href
+                ? "bg-primary/10 text-primary font-medium"
+                : "text-default-600 hover:bg-default-100"
+                }`}
             >
               {link.label}
             </Link>

@@ -1,5 +1,6 @@
 import { VSIcon, GitIcon, HTMLIcon, CSSIcon, TSIcon, JSIcon } from "@/components/tech-icons";
 import React from "react";
+import { gitData } from "./pages/git";
 
 export const masterData = {
   header: {
@@ -8,6 +9,7 @@ export const masterData = {
     titleAccent: "ENGINE",
     description: "Elevate your workflow with curated code blueprints and syntax fast-tracks.",
     suffix: "Built by devs, for devs.",
+    hideSidebar: true,
   },
   categories: [
     { label: "คอร์สเรียนฟรี", href: "#", variant: "flat" as const },
@@ -35,5 +37,8 @@ export const masterData = {
       { label: "Getting Started", href: "/docs/getting-started" },
       { label: "Components", href: "/docs/components" },
     ]
-  }
+  },
+  pageConfigs: {
+    "/docs/git": gitData,
+  } as Record<string, any>
 };
